@@ -1,0 +1,633 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Microsoft YaHei', Arial, sans-serif;
+}
+
+body {
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 认证页面样式 */
+#auth-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+    margin: 50px auto;
+}
+
+#auth-container h1 {
+    text-align: center;
+    color: #4a6cf7;
+    margin-bottom: 30px;
+}
+
+.auth-tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.auth-tabs button {
+    flex: 1;
+    padding: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #666;
+    transition: all 0.3s ease;
+}
+
+.auth-tabs button.active-tab {
+    color: #4a6cf7;
+    border-bottom: 2px solid #4a6cf7;
+}
+
+.auth-form {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #4a6cf7;
+}
+
+.form-hint {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+    color: #666;
+    font-style: italic;
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #4a6cf7;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #3a5ce5;
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.auth-footer button {
+    background: none;
+    border: none;
+    color: #4a6cf7;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* 点赞相关样式 */
+.like-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 12px;
+    background-color: #f5f7fa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.like-btn:hover {
+    background-color: #eaeaea;
+}
+
+.like-btn.liked {
+    background-color: #ffeded;
+    border-color: #e74c3c;
+    color: #e74c3c;
+}
+
+.like-btn.liked:hover {
+    background-color: #ffdbdb;
+}
+
+.like-count {
+    font-weight: bold;
+}
+
+/* 点赞列表弹窗样式 */
+.likes-list-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.likes-list-content {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 500px;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.likes-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.likes-list-header h3 {
+    margin: 0;
+    color: #333;
+}
+
+.close-likes-list {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+.close-likes-list:hover {
+    color: #333;
+}
+
+.likes-list-body {
+    padding: 20px;
+    overflow-y: auto;
+    max-height: calc(80vh - 60px);
+}
+
+.like-user-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.like-user-item:last-child {
+    border-bottom: none;
+}
+
+.like-user-username {
+    font-weight: bold;
+    color: #4a6cf7;
+}
+
+.like-user-realname {
+    color: #666;
+    font-size: 14px;
+}
+
+.like-user-date {
+    color: #999;
+    font-size: 12px;
+}
+
+/* 主应用界面样式 */
+#main-container header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+#main-container header h1 {
+    color: #4a6cf7;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-info button {
+    padding: 8px 15px;
+    background-color: #f5f7fa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.user-info button:hover {
+    background-color: #eaeaea;
+}
+
+/* 主导航样式 */
+.main-nav {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.nav-btn {
+    flex: 1;
+    padding: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #666;
+    transition: all 0.3s ease;
+}
+
+.nav-btn.active-nav-btn {
+    color: #4a6cf7;
+    border-bottom: 2px solid #4a6cf7;
+}
+
+.view-section {
+    width: 100%;
+}
+
+.post-section {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.post-section h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.posts-section {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.posts-section h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.post-item {
+    border-bottom: 1px solid #eaeaea;
+    padding: 15px 0;
+}
+
+.post-item:last-child {
+    border-bottom: none;
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.post-username {
+    font-weight: 600;
+    color: #4a6cf7;
+}
+
+.post-date {
+    color: #999;
+    font-size: 14px;
+}
+
+.post-content {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.post-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.post-actions button {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.post-actions button:hover {
+    color: #4a6cf7;
+}
+
+.comments-section {
+    margin-top: 15px;
+    padding-left: 20px;
+    border-left: 2px solid #eaeaea;
+}
+
+.comment-item {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #eaeaea;
+}
+
+.comment-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.comment-username {
+    font-weight: 500;
+    color: #666;
+    font-size: 14px;
+}
+
+.comment-date {
+    color: #999;
+    font-size: 12px;
+}
+
+.comment-content {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.add-comment {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.add-comment input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.add-comment button {
+    padding: 8px 12px;
+    background-color: #4a6cf7;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.add-comment button:hover {
+    background-color: #3a5ce5;
+}
+
+/* 管理员界面样式 */
+#admin-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#admin-container header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.admin-header-actions {
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.clear-cache-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.clear-cache-btn:hover {
+    background-color: #c0392b;
+}
+
+#admin-container header h1 {
+    color: #e74c3c;
+}
+
+.admin-tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.admin-tabs button {
+    flex: 1;
+    padding: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #666;
+    transition: all 0.3s ease;
+}
+
+.admin-tabs button.active-tab {
+    color: #e74c3c;
+    border-bottom: 2px solid #e74c3c;
+}
+
+.admin-section {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.admin-section h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.admin-post-item,
+.admin-user-item {
+    border-bottom: 1px solid #eaeaea;
+    padding: 15px 0;
+}
+
+.admin-post-item:last-child,
+.admin-user-item:last-child {
+    border-bottom: none;
+}
+
+.admin-post-header,
+.admin-user-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.admin-post-username,
+.admin-user-username {
+    font-weight: 600;
+    color: #4a6cf7;
+}
+
+.admin-post-realname,
+.admin-user-realname {
+    margin-left: 10px;
+    color: #666;
+    font-size: 14px;
+}
+
+.admin-post-date,
+.admin-user-date {
+    color: #999;
+    font-size: 14px;
+}
+
+.admin-post-content,
+.admin-user-status {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.admin-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.admin-actions button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.delete-btn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+.ban-btn {
+    background-color: #f39c12;
+    color: white;
+}
+
+.ban-btn:hover {
+    background-color: #d68910;
+}
+
+.unban-btn {
+    background-color: #27ae60;
+    color: white;
+}
+
+.unban-btn:hover {
+    background-color: #229954;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    #auth-container {
+        padding: 20px;
+    }
+    
+    .post-header,
+    .comment-header,
+    .admin-post-header,
+    .admin-user-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .post-actions,
+    .admin-actions {
+        flex-wrap: wrap;
+    }
+}

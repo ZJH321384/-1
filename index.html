@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高一一班倾诉箱</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- 登录/注册界面 -->
+        <div id="auth-container" class="container">
+            <h1>高一一班倾诉箱</h1>
+            <div class="auth-tabs">
+                <button id="login-tab" class="active-tab">登录</button>
+                <button id="register-tab">注册</button>
+            </div>
+            
+            <!-- 登录表单 -->
+            <form id="login-form" class="auth-form">
+                <div class="form-group">
+                    <label for="login-username">用户名</label>
+                    <input type="text" id="login-username" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">密码</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit" class="btn">登录</button>
+            </form>
+            
+            <!-- 注册表单 -->
+            <form id="register-form" class="auth-form" style="display: none;">
+                <div class="form-group">
+                    <label for="register-username">用户名</label>
+                    <input type="text" id="register-username" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-realname">真实姓名（仅管理员可见）</label>
+                    <input type="text" id="register-realname" required placeholder="请输入高一一班同学名单中的真实姓名">
+                    <small class="form-hint">真实姓名必须是高一一班同学名单中的姓名，且每个姓名只能注册一次</small>
+                </div>
+                <div class="form-group">
+                    <label for="register-password">密码</label>
+                    <input type="password" id="register-password" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-confirm-password">确认密码</label>
+                    <input type="password" id="register-confirm-password" required>
+                </div>
+                <button type="submit" class="btn">注册</button>
+            </form>
+            
+            <div class="auth-footer">
+                <button id="admin-login-btn">管理员登录</button>
+            </div>
+        </div>
+        
+        <!-- 主应用界面 -->
+        <div id="main-container" class="container" style="display: none;">
+            <header>
+                <h1>高一一班倾诉箱</h1>
+                <div class="user-info">
+                    <span id="display-username"></span>
+                    <button id="logout-btn">退出登录</button>
+                </div>
+            </header>
+            
+            <nav class="main-nav">
+                <button id="view-posts-btn" class="nav-btn active-nav-btn">查看倾诉</button>
+                <button id="create-post-btn" class="nav-btn">发布倾诉</button>
+            </nav>
+            
+            <main>
+                <!-- 倾诉内容界面 -->
+                <div id="posts-view" class="view-section">
+                    <div class="posts-section">
+                        <h2>倾诉内容</h2>
+                        <div id="posts-container">
+                            <!-- 帖子将在这里动态加载 -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 发布倾诉界面 -->
+                <div id="create-post-view" class="view-section" style="display: none;">
+                    <div class="post-section">
+                        <h2>发布新倾诉</h2>
+                        <form id="post-form">
+                            <div class="form-group">
+                                <textarea id="post-content" placeholder="分享你的想法..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn">发布</button>
+                        </form>
+                    </div>
+                </div>
+            </main>
+        </div>
+        
+        <!-- 管理员界面 -->
+        <div id="admin-container" class="container" style="display: none;">
+            <header>
+                <h1>高一一班倾诉箱 - 管理员</h1>
+                <div class="user-info">
+                    <span>管理员</span>
+                    <button id="admin-logout-btn">退出登录</button>
+                </div>
+            </header>
+            
+            <div class="admin-header-actions">
+                <button id="clear-cache-btn" class="clear-cache-btn">清除缓存</button>
+            </div>
+            
+            <main>
+                <div class="admin-tabs">
+                    <button id="posts-tab" class="active-tab">内容管理</button>
+                    <button id="users-tab">用户管理</button>
+                </div>
+                
+                <!-- 内容管理 -->
+                <div id="posts-management" class="admin-section">
+                    <h2>内容管理</h2>
+                    <div id="admin-posts-container">
+                        <!-- 帖子将在这里动态加载 -->
+                    </div>
+                </div>
+                
+                <!-- 用户管理 -->
+                <div id="users-management" class="admin-section" style="display: none;">
+                    <h2>用户管理</h2>
+                    <div id="admin-users-container">
+                        <!-- 用户列表将在这里动态加载 -->
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+    <script>
+        // 初始化应用
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM加载完成，初始化应用...');
+            if (window.app && typeof window.app.init === 'function') {
+                window.app.init();
+            } else {
+                console.error('应用初始化失败：window.app或window.app.init未定义');
+            }
+        });
+    </script>
+</body>
+</html>
